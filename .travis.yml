@@ -3,7 +3,7 @@ services:
     - docker
 
 before-install:
-    - docker build -t ducnguyen/docker-react -f Dockerfile.dev .
+    - docker build -t phuocduc/docker-react -f Dockerfile.dev .
 
-scripts:
-    - docker run ducnguyen/docker-react npm run test -- --coverage
+script:
+    - docker run phuocduc/docker-react npm run test -- --coverage
