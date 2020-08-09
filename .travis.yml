@@ -10,3 +10,17 @@ before-install:
 
 script:
   - docker run -it -e CI=true ducnguyen095456/dockerreact npm run test -- --coverage # run test
+
+deploy:
+  provider: elasticbeanstalk #tên nha cung cap elasticbeantalk
+  region: "ap-southeast-1" # trong phan url app nó là phần đứng trước elasticbeanstalk.com
+  app: "react-docker" # app name
+  env: "ReactDocker-env-1" # moi truong su dung
+  bucket_name: "elasticbeanstalk-ap-southeast-1-406584201417" # trong service s3 của aws kiếm bucket moi tạo
+  bucket_path: "react-docker" # mặc định khi chưa tạo thì lấy default thằng app name của application
+  on:
+    branch: master
+
+  access_key_id: $AWS_ACCESS_KEY
+  secrect_access_key:
+    secure: "$AWS_SECRECT_KEY"
