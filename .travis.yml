@@ -1,3 +1,7 @@
+language: node_js
+node_js: 
+    - "12"
+
 sudo: required
 services: 
     - docker
@@ -6,7 +10,7 @@ before-install:
     - docker build -t phuocduc/docker-react -f Dockerfile.dev .  # chay file dockerfile.dev vs cai tag name phuocduc/docker-react
 
 script:
-    - docker run phuocduc/docker-react npm run test -- --coverage   # run test
+    - docker run phuocduc/docker-react npm run test # run test
 
 deploy:
     provider: elasticbeanstalk #tên nha cung cap elasticbeantalk
